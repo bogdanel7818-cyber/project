@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Balul Bobocilor L.T.N</title>
+  <meta name="description" content="Vot Balul Bobocilor – No Filter Night" />
+  <style>
+    :root {
+      --bg: #0e0e0f;       /* negru inchis */
+      --panel: #1a1a1d;    /* gri-negru */
+      --accent: #e1252b;   /* rosu */
+      --accent-2: #ff3b3b; /* rosu aprins pt hover mici */
+      --text: #ffffff;     /* alb */
+      --muted: #cfcfd4;    /* gri deschis */
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji", "Apple Color Emoji";
+    }
+    .wrap {
+      max-width: 720px; margin: 0 auto; padding: 24px; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: center; gap: 24px;
+    }
+    .card {
+      background: linear-gradient(180deg, #161617 0%, #121213 100%);
+      border: 1px solid #2a2a2f; border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .title {
+      font-size: 28px; font-weight: 800; letter-spacing: 0.6px; text-align: center;
+    }
+    .subtitle { text-align: center; color: var(--muted); margin-top: 6px; }
+    .badge {
+      display: inline-block; background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 999px;
+      font-weight: 700; letter-spacing: .5px; margin: 8px auto 0; text-align: center;
+    }
+    form { display: grid; gap: 14px; margin-top: 10px; }
+    label { font-weight: 700; font-size: 14px; color: #fff; }
+    input[type="text"], select {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #2f2f35; background: var(--panel);
+      color: var(--text); outline: none; font-size: 16px; transition: border .2s;
+    }
+    input[type="text"]:focus, select:focus { border-color: var(--accent); }
+    button {
+      padding: 14px 18px; border-radius: 14px; border: 0; background: var(--accent); color: #fff; font-weight: 800;
+      letter-spacing: .5px; cursor: pointer; font-size: 16px; transition: transform .05s ease, filter .15s ease;
+    }
+    button:hover { filter: brightness(1.1); }
+    button:active { transform: translateY(1px); }
+
+    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 8px; }
+    .logo { text-align:center; }
+    .logo .moon { width: 100px; height: 100px; background: radial-gradient(circle at 55% 45%, #b71922 0, #9f121b 50%, #7a0e15 70%, #40070b 100%);
+      border-radius: 50%; position: relative; margin: 0 auto 10px; box-shadow: 0 0 40px rgba(225,37,43,.35);
+    }
+    .sparkle { position: absolute; width: 6px; height: 6px; background: var(--accent); top: 18%; left: 18%; transform: rotate(45deg); }
+    .sparkle::after, .sparkle::before { content:""; position: absolute; background: var(--accent); }
+    .sparkle::after { width: 6px; height: 6px; top: -8px; left: 0; transform: rotate(45deg); }
+    .sparkle::before { width: 6px; height: 6px; top: 8px; left: 0; transform: rotate(45deg); }
+
+    .hr { height: 1px; background: #2b2b30; margin: 6px 0 10px; }
+    .success { background: #102317; border: 1px solid #1f6d3b; color: #b8ffce; padding: 12px; border-radius: 10px; }
+    .error { background: #2a0f12; border: 1px solid #97343a; color: #ffb9be; padding: 12px; border-radius: 10px; }
+    .hidden { display: none; }
+    .pair { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding-bottom: 25px; }
+    footer p { margin: 0; color: var(--text); }
+    footer .socials { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
+    footer .socials a { color: var(--text); font-size: 26px; transition: color 0.25s, transform 0.2s; }
+    footer .socials a:hover { color: var(--accent); transform: scale(1.15); }
+    @media (max-width: 560px){ .pair { grid-template-columns: 1fr; } }
+
+    .small { font-size: 12px; color: var(--muted); }
+
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at top left, #0b0b0c, #0e0e0f); }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="wrap">
+    <div class="card">
+      <div class="logo">
+        <div class="moon">
+          <div class="sparkle" style="top:22%; left:68%"></div>
+          <div class="sparkle" style="top:66%; left:34%"></div>
+        </div>
+      </div>
+      <div class="title">Balul Bobocilor – <em>No Filter Night</em></div>
+      <div class="subtitle">Votează-ți favoriții • Valabil doar cu <b>codul unic</b> de pe bilet</div>
+      <div class="badge">Vot deschis</div>
+
+      <div class="hr"></div>
+
+      <form id="voteForm">
+        <div>
+          <label for="code">Cod unic (de pe bilet)</label>
+          <input id="code" name="code" type="text" inputmode="text" autocomplete="one-time-code" placeholder="Ex: G4T2K8" required maxlength="12" />
+          <div class="small">Fiecare cod poate fi folosit o singură dată.</div>
+        </div>
+
+        <div class="pair">
+          <div>
+            <label for="boboc">Boboc</label>
+            <select id="boboc" name="boboc" required>
+              <option value="" disabled selected>— alege —</option>
+              <option>Dârvăreanu Dragoș Constantin</option>
+              <option>Jitaru Rares Ionut</option>
+              <option>Nițu Ioanis Ostian</option>
+              <option>Vărzaru Radu</option>
+            </select>
+          </div>
+          <div>
+            <label for="boboaca">Boboacă</label>
+            <select id="boboaca" name="boboaca" required>
+              <option value="" disabled selected>— alege —</option>
+              <option>Mutu Petronela Maia</option>
+              <option>Nicolae Anca Elena</option>
+              <option>Roșoiu Antonia Petruța</option>
+              <option>Rădoi Miruna Maria</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="submitBtn" type="submit">Votează</button>
+        <div id="msg" class="hidden"></div>
+      </form>
+
+      <div class="footer">Liceul Teoretic Novaci • Vot valid doar în sală • Un cod = un vot</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Made with <span style="color: red;">♥</span> by <strong>Darius Cosoreci & Bogdan Predescu!</strong>
+    </p>
+    <div class="socials">
+      <a href="https://www.instagram.com/darius_cosoreci/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://github.com/DariusC007" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/bogdy.bgd/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+
+  <script>
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwHS0BeGknU2h_UUN8CsULRZsXPzcYrWDRUgrqxHutTjNlNVmUbDbu9B1FUReBnxdHbXA/exec";
+
+    const form = document.getElementById('voteForm');
+    const msg = document.getElementById('msg');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showStatus(text, type='success'){
+      msg.className = type === 'success' ? 'success' : 'error';
+      msg.textContent = text; 
+      msg.classList.remove('hidden');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.classList.add('hidden');
+
+      const code = document.getElementById('code').value.trim().toUpperCase();
+      const boboc = document.getElementById('boboc').value;
+      const boboaca = document.getElementById('boboaca').value;
+
+      if(!code || !boboc || !boboaca){
+        showStatus('Completează toate câmpurile.', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Se trimite…';
+
+      try {
+        const payload = { code, boboc, boboaca };
+
+        const response = await fetch(WEBAPP_URL, {
+          method: "POST",
+          body: JSON.stringify({ code, boboc, boboaca })
+        });
+
+        const result = await response.json();
+
+        if (!result.ok) {
+          showStatus(result.error || "Eroare necunoscuta.", "error");
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Votează';
+          return;
+        }
+
+        showStatus("Mulțumim! Votul tău a fost înregistrat.");
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Votează';
+
+      } catch (err) {
+        showStatus("Eroare la server. Încearcă din nou.", "error");
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Votează';
+      }
+    });
+
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function createParticles() {
+    const count = 120;
+    particles = [];
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+
+        r: Math.random() * 2.2 + 0.8,
+        color: Math.random() > 0.5 ? '#e1252b' : '#ffffff',
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        opacity: Math.random() * 0.5 + 0.3,
+      });
+    }
+  }
+  createParticles();
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+        p.x = Math.random() * canvas.width;
+        p.y = Math.random() * canvas.height;
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+  </script>
+</body>
+</html>
