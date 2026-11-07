@@ -7,76 +7,70 @@
   <title>Balul Bobocilor L.T.N</title>
   <meta name="description" content="Vot Balul Bobocilor – No Filter Night" />
   <style>
-    :root {
-      --bg: #0e0e0f;       /* negru inchis */
-      --panel: #1a1a1d;    /* gri-negru */
-      --accent: #e1252b;   /* rosu */
-      --accent-2: #ff3b3b; /* rosu aprins pt hover mici */
-      --text: #ffffff;     /* alb */
-      --muted: #cfcfd4;    /* gri deschis */
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; padding: 0; background: var(--bg); color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji", "Apple Color Emoji";
-    }
-    .wrap {
-      max-width: 720px; margin: 0 auto; padding: 24px; min-height: 100svh;
-      display: flex; flex-direction: column; justify-content: center; gap: 24px;
-    }
-    .card {
-      background: linear-gradient(180deg, #161617 0%, #121213 100%);
-      border: 1px solid #2a2a2f; border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    .title {
-      font-size: 28px; font-weight: 800; letter-spacing: 0.6px; text-align: center;
-    }
-    .subtitle { text-align: center; color: var(--muted); margin-top: 6px; }
-    .badge {
-      display: inline-block; background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 999px;
-      font-weight: 700; letter-spacing: .5px; margin: 8px auto 0; text-align: center;
-    }
-    form { display: grid; gap: 14px; margin-top: 10px; }
-    label { font-weight: 700; font-size: 14px; color: #fff; }
-    input[type="text"], select {
-      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #2f2f35; background: var(--panel);
-      color: var(--text); outline: none; font-size: 16px; transition: border .2s;
-    }
-    input[type="text"]:focus, select:focus { border-color: var(--accent); }
-    button {
-      padding: 14px 18px; border-radius: 14px; border: 0; background: var(--accent); color: #fff; font-weight: 800;
-      letter-spacing: .5px; cursor: pointer; font-size: 16px; transition: transform .05s ease, filter .15s ease;
-    }
-    button:hover { filter: brightness(1.1); }
-    button:active { transform: translateY(1px); }
-
-    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 8px; }
-    .logo { text-align:center; }
-    .logo .moon { width: 100px; height: 100px; background: radial-gradient(circle at 55% 45%, #b71922 0, #9f121b 50%, #7a0e15 70%, #40070b 100%);
-      border-radius: 50%; position: relative; margin: 0 auto 10px; box-shadow: 0 0 40px rgba(225,37,43,.35);
-    }
-    .sparkle { position: absolute; width: 6px; height: 6px; background: var(--accent); top: 18%; left: 18%; transform: rotate(45deg); }
-    .sparkle::after, .sparkle::before { content:""; position: absolute; background: var(--accent); }
-    .sparkle::after { width: 6px; height: 6px; top: -8px; left: 0; transform: rotate(45deg); }
-    .sparkle::before { width: 6px; height: 6px; top: 8px; left: 0; transform: rotate(45deg); }
-
-    .hr { height: 1px; background: #2b2b30; margin: 6px 0 10px; }
-    .success { background: #102317; border: 1px solid #1f6d3b; color: #b8ffce; padding: 12px; border-radius: 10px; }
-    .error { background: #2a0f12; border: 1px solid #97343a; color: #ffb9be; padding: 12px; border-radius: 10px; }
-    .hidden { display: none; }
-    .pair { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding-bottom: 25px; }
-    footer p { margin: 0; color: var(--text); }
-    footer .socials { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
-    footer .socials a { color: var(--text); font-size: 26px; transition: color 0.25s, transform 0.2s; }
-    footer .socials a:hover { color: var(--accent); transform: scale(1.15); }
-    @media (max-width: 560px){ .pair { grid-template-columns: 1fr; } }
-
-    .small { font-size: 12px; color: var(--muted); }
-
-    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at top left, #0b0b0c, #0e0e0f); }
-  </style>
+  :root {
+    --bg: #080d18;
+    --panel: #111827;
+    --accent: #e4b85f;
+    --accent-2: #ffe3a0;
+    --text: #fff8e9;
+    --muted: #c4b99f;
+    --line: rgba(228,184,95,.32);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0; color: var(--text);
+    font-family: Georgia, 'Times New Roman', serif;
+    background: radial-gradient(ellipse at 50% 10%, rgba(30,54,88,.72), transparent 52%),
+      radial-gradient(ellipse at 12% 82%, rgba(121,70,31,.24), transparent 38%),
+      linear-gradient(145deg, #080d18, #111827 52%, #090d17);
+    min-height: 100vh;
+  }
+  .wrap {
+    position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 34px 24px 10px;
+    min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 24px;
+  }
+  .card {
+    position: relative; overflow: hidden; padding: 30px;
+    background: linear-gradient(150deg, rgba(26,35,52,.96), rgba(12,18,30,.97) 72%);
+    border: 1px solid var(--line); border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.55), inset 0 0 0 5px rgba(228,184,95,.035);
+  }
+  .card::before { content: ''; position: absolute; inset: 9px; border: 1px solid rgba(228,184,95,.14); border-radius: 17px; pointer-events: none; }
+  .title { font-size: clamp(30px, 6vw, 42px); font-weight: 700; letter-spacing: 1.5px; text-align: center; color: var(--accent-2); text-shadow: 0 2px 18px rgba(228,184,95,.25); }
+  .subtitle { text-align: center; color: var(--muted); margin-top: 8px; font-family: system-ui, sans-serif; font-size: 14px; }
+  .badge { display: table; background: linear-gradient(135deg, #f0cd7e, #bd8735); color: #17131a; padding: 7px 16px; border-radius: 999px; font: 800 12px system-ui, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; margin: 14px auto 0; text-align: center; box-shadow: 0 0 22px rgba(228,184,95,.16); }
+  form { display: grid; gap: 16px; margin-top: 14px; position: relative; z-index: 1; }
+  label { display: block; margin-bottom: 7px; font: 700 13px system-ui, sans-serif; letter-spacing: .3px; color: #f4ddb0; }
+  input[type="text"], select { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1px solid rgba(228,184,95,.25); background: rgba(7,12,21,.8); color: var(--text); outline: none; font: 15px system-ui, sans-serif; transition: border .2s, box-shadow .2s; }
+  input[type="text"]:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(228,184,95,.13); }
+  select option { background: #111827; color: var(--text); }
+  button { padding: 15px 18px; border-radius: 13px; border: 1px solid #f6d991; background: linear-gradient(135deg, #f1ce7f, #bc8738); color: #17131a; font: 800 15px system-ui, sans-serif; letter-spacing: 1.1px; text-transform: uppercase; cursor: pointer; transition: transform .15s ease, filter .15s ease, box-shadow .15s ease; box-shadow: 0 8px 24px rgba(185,130,48,.22); }
+  button:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 11px 28px rgba(185,130,48,.3); }
+  button:active { transform: translateY(1px); }
+  button:disabled { opacity: .68; cursor: wait; }
+  .footer { text-align: center; color: var(--muted); font: 12px/1.6 system-ui, sans-serif; margin-top: 18px; }
+  .logo { text-align:center; margin-bottom: 12px; }
+  .logo .moon { width: 112px; height: 112px; border-radius: 50%; position: relative; margin: 0 auto 14px; border: 3px solid #d7a94f; background: radial-gradient(circle, #17345a 0 31%, #b17b32 32% 35%, #12213b 36% 53%, #d7a94f 54% 57%, #121d30 58%); box-shadow: 0 0 0 6px rgba(215,169,79,.1), 0 0 35px rgba(228,184,95,.24), inset 0 0 24px #000; }
+  .logo .moon::before { content: '✦'; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: #f7d487; font-size: 33px; text-shadow: 0 0 12px #f4c75f; }
+  .logo .moon::after { content: 'XII  •  III  •  VI  •  IX'; position: absolute; inset: 9px; border: 1px solid rgba(245,210,132,.46); border-radius: 50%; color: #f5d284; font: 700 8px Georgia,serif; letter-spacing: 4px; display: flex; align-items: flex-start; justify-content: center; padding-top: 2px; }
+  .sparkle { position: absolute; width: 5px; height: 5px; background: #fff0ba; top: 18%; left: 18%; transform: rotate(45deg); box-shadow: 0 0 12px #f2c45e; z-index: 1; }
+  .sparkle::after, .sparkle::before { content:""; position: absolute; background: #fff0ba; }
+  .sparkle::after { width: 5px; height: 5px; top: -7px; left: 0; transform: rotate(45deg); }
+  .sparkle::before { width: 5px; height: 5px; top: 7px; left: 0; transform: rotate(45deg); }
+  .hr { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); margin: 22px 0 18px; }
+  .success { background: rgba(20,75,49,.35); border: 1px solid #4e9e6a; color: #c1f4d0; padding: 12px; border-radius: 10px; font: 14px system-ui,sans-serif; }
+  .error { background: rgba(93,34,34,.35); border: 1px solid #b76559; color: #ffd1c8; padding: 12px; border-radius: 10px; font: 14px system-ui,sans-serif; }
+  .hidden { display: none; }
+  .pair { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  footer { text-align: center; color: var(--muted); font: 13px system-ui,sans-serif; margin-top: 24px; padding: 0 16px 25px; }
+  footer p { margin: 0; color: var(--text); }
+  footer .socials { margin-top: 12px; display: flex; justify-content: center; gap: 22px; }
+  footer .socials a { color: #d7b873; font-size: 23px; transition: color .25s, transform .2s; }
+  footer .socials a:hover { color: #fff0bd; transform: scale(1.15); }
+  .small { font: 12px system-ui,sans-serif; color: var(--muted); margin-top: 6px; }
+  #particles { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; background: radial-gradient(circle at top left, rgba(18,30,50,.34), transparent 55%); }
+  @media (max-width: 560px) { .pair { grid-template-columns: 1fr; } .wrap { padding: 18px 14px 4px; } .card { padding: 25px 20px; } }
+</style>
 </head>
 <body>
   <canvas id="particles"></canvas>
@@ -88,7 +82,7 @@
           <div class="sparkle" style="top:66%; left:34%"></div>
         </div>
       </div>
-      <div class="title">Balul Bobocilor – <em>No Filter Night</em></div>
+      <div class="title">Balul Bobocilor</div>
       <div class="subtitle">Votează-ți favoriții • Valabil doar cu <b>codul unic</b> de pe bilet</div>
       <div class="badge">Vot deschis</div>
 
@@ -152,7 +146,7 @@
 
 
   <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwHS0BeGknU2h_UUN8CsULRZsXPzcYrWDRUgrqxHutTjNlNVmUbDbu9B1FUReBnxdHbXA/exec";
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwMXLaWEnTE2lbB271xvaILDAdgccnN0YvmBgS7xQ4-IQrw4zpB26st5ReeaM741jFOig/exec";
 
     const form = document.getElementById('voteForm');
     const msg = document.getElementById('msg');
@@ -230,7 +224,7 @@
         y: Math.random() * canvas.height,
 
         r: Math.random() * 2.2 + 0.8,
-        color: Math.random() > 0.5 ? '#e1252b' : '#ffffff',
+        color: Math.random() > 0.5 ? '#e4b85f' : '#d7e5ff',
         vx: (Math.random() - 0.5) * 0.25,
         vy: (Math.random() - 0.5) * 0.25,
         opacity: Math.random() * 0.5 + 0.3,
