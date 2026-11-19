@@ -1,4 +1,4 @@
-  <!doctype html>
+<!doctype html>
 <html lang="ro">
 <head>
   <meta charset="utf-8" />
@@ -23,12 +23,11 @@
     background: radial-gradient(ellipse at 50% 10%, rgba(30,54,88,.72), transparent 52%),
       radial-gradient(ellipse at 12% 82%, rgba(121,70,31,.24), transparent 38%),
       linear-gradient(145deg, #080d18, #111827 52%, #090d17);
-    min-height: 100vh; min-height: 100svh;
-    display: flex; flex-direction: column;
+    min-height: 100vh;
   }
   .wrap {
-    position: relative; z-index: 1; width: 100%; max-width: 720px; margin: 0 auto; padding: 16px 24px 8px;
-    flex: 1 0 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px;
+    position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 34px 24px 10px;
+    min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 24px;
   }
   .card {
     position: relative; overflow: hidden; padding: 30px;
@@ -63,53 +62,14 @@
   .error { background: rgba(93,34,34,.35); border: 1px solid #b76559; color: #ffd1c8; padding: 12px; border-radius: 10px; font: 14px system-ui,sans-serif; }
   .hidden { display: none; }
   .pair { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  footer { position: relative; z-index: 1; text-align: center; color: var(--muted); font: 12px system-ui,sans-serif; margin-top: 0; padding: 4px 16px 12px; flex: 0 0 auto; }
+  footer { text-align: center; color: var(--muted); font: 13px system-ui,sans-serif; margin-top: 24px; padding: 0 16px 25px; }
   footer p { margin: 0; color: var(--text); }
-  footer .credit-line { display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: 5px; }
-  footer .credit-person { display: inline-flex; flex-direction: column; align-items: center; vertical-align: top; }
-  footer .credit-person strong { color: var(--text); }
-  footer .social-links { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 4px; }
-  footer .social-links a { color: #d7b873; font-size: 21px; transition: color .25s, transform .2s; }
-  footer .social-links a:hover { color: #fff0bd; transform: translateY(-2px) scale(1.08); }
-  @media (max-width: 400px) {
-    footer .credit-line { column-gap: 4px; row-gap: 2px; }
-    footer .social-links { gap: 12px; }
-    footer { font-size: 10px; padding: 2px 8px 8px; }
-    footer .social-links a { font-size: 19px; }
-  }
+  footer .socials { margin-top: 12px; display: flex; justify-content: center; gap: 22px; }
+  footer .socials a { color: #d7b873; font-size: 23px; transition: color .25s, transform .2s; }
+  footer .socials a:hover { color: #fff0bd; transform: scale(1.15); }
   .small { font: 12px system-ui,sans-serif; color: var(--muted); margin-top: 6px; }
   #particles { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; background: radial-gradient(circle at top left, rgba(18,30,50,.34), transparent 55%); }
-  @media (max-width: 560px) {
-    .wrap { padding: 8px 10px 4px; gap: 8px; }
-    .card { padding: 16px 14px; border-radius: 19px; }
-    .card::before { inset: 6px; border-radius: 13px; }
-    .logo { margin-bottom: 6px; }
-    .logo .moon { width: 72px; height: 72px; margin-bottom: 8px; }
-    .logo .moon::before { font-size: 25px; }
-    .logo .moon::after { inset: 6px; font-size: 6px; letter-spacing: 2px; }
-    .title { font-size: clamp(25px, 7vw, 32px); letter-spacing: 1px; }
-    .subtitle { margin-top: 4px; font-size: 12px; }
-    .badge { margin-top: 8px; padding: 5px 12px; font-size: 10px; }
-    .hr { margin: 12px 0 10px; }
-    form { gap: 10px; margin-top: 8px; }
-    label { margin-bottom: 4px; font-size: 12px; }
-    input[type="text"], select { padding: 10px 9px; font-size: 13px; border-radius: 9px; }
-    .pair { grid-template-columns: 1fr 1fr; gap: 8px; }
-    button { padding: 11px 14px; font-size: 13px; }
-    .small { font-size: 10px; margin-top: 4px; }
-    .footer { margin-top: 10px; font-size: 10px; }
-    footer { padding-top: 2px; padding-bottom: 8px; }
-  }
-  @media (max-height: 760px) {
-    .wrap { padding-top: 6px; padding-bottom: 4px; gap: 6px; }
-    .card { padding-top: 14px; padding-bottom: 14px; }
-    .logo { margin-bottom: 4px; }
-    .logo .moon { width: 64px; height: 64px; margin-bottom: 6px; }
-    .hr { margin: 10px 0 8px; }
-    form { gap: 8px; margin-top: 6px; }
-    .footer { margin-top: 8px; }
-    footer { padding-bottom: 6px; }
-  }
+  @media (max-width: 560px) { .pair { grid-template-columns: 1fr; } .wrap { padding: 18px 14px 4px; } .card { padding: 25px 20px; } }
 </style>
 </head>
 <body>
@@ -168,29 +128,20 @@
 
   <!-- Footer -->
   <footer>
-    <p class="credit-line">
-      <span>Made with <span style="color: red;">♥</span> by</span>
-      <span class="credit-person">
-        <strong>Darius Cosoreci</strong>
-        <span class="social-links">
-          <a href="https://www.instagram.com/dariuscosoreci.ro/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Darius Cosoreci" title="Instagram — Darius Cosoreci">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
-          </a>
-          <a href="https://github.com/DariusC007" target="_blank" rel="noopener noreferrer" aria-label="GitHub Darius Cosoreci" title="GitHub — Darius Cosoreci">
-            <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-        </span>
-      </span>
-      <span>&amp;</span>
-      <span class="credit-person">
-        <strong>Bogdan Predescu!</strong>
-        <span class="social-links">
-          <a href="https://www.instagram.com/bogdy.bgd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Bogdan Predescu" title="Instagram — Bogdan Predescu">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
-          </a>
-        </span>
-      </span>
+    <p>
+      Made with <span style="color: red;">♥</span> by <strong>Darius Cosoreci & Bogdan Predescu!</strong>
     </p>
+    <div class="socials">
+      <a href="https://www.instagram.com/dariuscosoreci.ro/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://github.com/DariusC007" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/bogdy.bgd/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
   </footer>
 
 
