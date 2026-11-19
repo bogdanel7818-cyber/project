@@ -18,19 +18,19 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; padding: 0; color: var(--text);
+    margin: 0; padding: 0; color: var(--text); 
     font-family: Georgia, 'Times New Roman', serif;
     background: radial-gradient(ellipse at 50% 10%, rgba(30,54,88,.72), transparent 52%),
       radial-gradient(ellipse at 12% 82%, rgba(121,70,31,.24), transparent 38%),
       linear-gradient(145deg, #080d18, #111827 52%, #090d17);
     min-height: 100vh;
-  }
+  } 
   .wrap {
     position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 34px 24px 10px;
     min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 24px;
   }
   .card {
-    position: relative; overflow: hidden; padding: 30px;
+    position: relative; overflow: hidden; padding: 30px; height: 650px;
     background: linear-gradient(150deg, rgba(26,35,52,.96), rgba(12,18,30,.97) 72%);
     border: 1px solid var(--line); border-radius: 24px;
     box-shadow: 0 24px 70px rgba(0,0,0,.55), inset 0 0 0 5px rgba(228,184,95,.035);
@@ -146,7 +146,7 @@
 
 
   <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwC2Gn00bSW2LfL-A3K-5v_spFr0JI7KQCqNju1aRQV44cb3rEXH8Po1EITr4WK-IaK/exec";
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzUhPtFyKx78On2n0EDvfmOu8TGjXrfAqgfhrIgSV5ryhW4L6l5GOfZ-GwCgUIZ113Z/exec";
 
     const form = document.getElementById('voteForm');
     const msg = document.getElementById('msg');
